@@ -16,6 +16,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var a = 1;
+  var name = ['피자집', '집', '가게'];
+  var like = [0, 0, 0];
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +39,17 @@ class _MyAppState extends State<MyApp> {
             body: ListView.builder(
               itemCount: 3,
               itemBuilder: (context, i){
-                print(i);
                 return ListTile(
-                  leading: Image.asset('camera.jpg'),
-                  title: Text('data'),
+                  leading: Text(like[i].toString()),
+                  title: Text(name[i]),
+                  trailing: ElevatedButton(child: Text('좋아요'),
+                      onPressed: (){
+                        setState(() {
+                          like[i]++;
+                        }
+                        );
+                      }
+                      ),
                 );
               },)
 
